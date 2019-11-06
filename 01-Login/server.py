@@ -14,6 +14,7 @@ from flask import session
 from flask import url_for
 from authlib.flask.client import OAuth
 from six.moves.urllib.parse import urlencode
+from authlib.jose import jwt
 
 import constants
 
@@ -50,7 +51,7 @@ auth0 = oauth.register(
     access_token_url=AUTH0_BASE_URL + '/oauth/token',
     authorize_url=AUTH0_BASE_URL + '/authorize',
     client_kwargs={
-        'scope': 'openid profile email',
+        'scope': 'openid email profile offline_access pms-api:interact',
     },
 )
 
@@ -73,10 +74,12 @@ def home():
 
 @app.route('/callback')
 def callback_handling():
-    auth0.authorize_access_token()
+    access_token = auth0.authorize_access_token()
+
     resp = auth0.get('userinfo')
     userinfo = resp.json()
 
+    userinfo.update(access_token)
     session[constants.JWT_PAYLOAD] = userinfo
     session[constants.PROFILE_KEY] = {
         'user_id': userinfo['sub'],
