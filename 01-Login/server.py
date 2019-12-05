@@ -51,7 +51,7 @@ auth0 = oauth.register(
     access_token_url=AUTH0_BASE_URL + '/oauth/token',
     authorize_url=AUTH0_BASE_URL + '/authorize',
     client_kwargs={
-        'scope': 'openid email profile offline_access pms-api:interact',
+        'scope': 'openid profile email offline_access',
     },
 )
 
