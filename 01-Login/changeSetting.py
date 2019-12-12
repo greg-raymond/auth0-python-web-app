@@ -23,7 +23,7 @@ headers = {
     'cache-control': "no-cache"
     }
 
-conn.request("GET", "/api/v2/resource-servers", payload, headers)
+conn.request("GET", "/api/v2/tenants/settings", payload, headers)
 
 res = conn.getresponse()
 data = res.read()
