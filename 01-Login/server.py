@@ -51,7 +51,7 @@ auth0 = oauth.register(
     access_token_url=AUTH0_BASE_URL + '/oauth/token',
     authorize_url=AUTH0_BASE_URL + '/authorize',
     client_kwargs={
-        'scope': 'openid profile email offline_access',
+        'scope': 'pms-api-access:' + env.get(constants.PRACTICE_ID) + ' offline_access',
     },
 )
 
@@ -79,12 +79,14 @@ def callback_handling():
     resp = auth0.get('userinfo')
     userinfo = resp.json()
 
+    del userinfo['error']
+    del userinfo['error_description']
     userinfo.update(access_token)
     session[constants.JWT_PAYLOAD] = userinfo
     session[constants.PROFILE_KEY] = {
-        'user_id': userinfo['sub'],
-        'name': userinfo['name'],
-        'picture': userinfo['picture']
+        'user_id': '',
+        'name': '',
+        'picture': ''
     }
     return redirect('/dashboard')
 
