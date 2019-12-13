@@ -1,9 +1,9 @@
 import json
 import http.client
 
-conn = http.client.HTTPSConnection("dev-col8i0t4.auth0.com")
+conn = http.client.HTTPSConnection("<domain name here>")
 
-payload = "{\"client_id\":\"C4eZDizZRG3jhbf1Rn3H6KKM2aOIkJCZ\",\"client_secret\":\"_yzsGra-00IcfFPLyEGGVNRuRiGEUakBjQLmk83hVGQClE-GTqEeltDQWumHmctx\",\"audience\":\"https://dev-col8i0t4.auth0.com/api/v2/\",\"grant_type\":\"client_credentials\"}"
+payload = "{\"client_id\":\"\",\"client_secret\":\"\",\"audience\":\"\",\"grant_type\":\"client_credentials\"}"
 
 headers = { 'content-type': "application/json" }
 
@@ -23,7 +23,7 @@ headers = {
     'cache-control': "no-cache"
     }
 
-conn.request("GET", "/api/v2/tenants/settings", payload, headers)
+conn.request("PATCH", "/api/v2/tenants/settings", payload, headers)
 
 res = conn.getresponse()
 data = res.read()
