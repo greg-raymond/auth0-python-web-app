@@ -32,7 +32,7 @@ This is example program is taken from auth0 and edited to provide a quick start 
 How to run:
 1. Install python
 2. Run pip install -r requirements.txt from the Login-01 folder
-3. Configure a .env file with the required fields given from HealthEngine
+3. Copy .env.example to .env and fill in the required fields given from HealthEngine
 4. Run python server.py
 5. In a web browser visit localhost:3000
 6. Complete the login flow and take the access_token from the last page
