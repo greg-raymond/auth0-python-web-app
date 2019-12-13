@@ -17,11 +17,6 @@ Auth0 helps you to easily:
 
 [Why Auth0?](https://auth0.com/why-auth0)
 
-## Create a free account in Auth0
-
-1. Go to [Auth0](https://auth0.com) and click Sign Up.
-2. Use Google, GitHub or Microsoft Account to login.
-
 ## Issue Reporting
 
 If you have found a bug or if you have a feature request, please report them at this repository issues section. Please do not report security vulnerabilities on the public GitHub issue tracker. The [Responsible Disclosure Program](https://auth0.com/whitehat) details the procedure for disclosing security issues.
@@ -29,3 +24,15 @@ If you have found a bug or if you have a feature request, please report them at 
 ## License
 
 This project is licensed under the MIT license. See the [LICENSE](LICENSE) file for more info.
+
+## HealthEngine Configuration
+
+This is example program is taken from auth0 and edited to provide a quick start for external vendors. In this case, it will allow you to request an access_token & refresh_token for a specific practice which is to be included in the Authorization header with the prefix Bearer.
+
+How to run:
+1. Install python
+2. Run pip install -r requirements.txt from the Login-01 folder
+3. Configure a .env file with the required fields given from HealthEngine
+4. Run python server.py
+5. In a web browser visit localhost:3000
+6. Complete the login flow and take the access_token from the last page
